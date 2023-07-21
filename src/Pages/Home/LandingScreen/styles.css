@@ -1,0 +1,8 @@
+.table-icon {
+  display: inline-block;
+  cursor: pointer;
+}
+.table-icon > img {
+  width: 20px;
+  height: 20px;
+}
