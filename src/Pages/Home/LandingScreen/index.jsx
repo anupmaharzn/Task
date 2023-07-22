@@ -5,34 +5,35 @@ import Form from "../../../components/Form";
 import { getItem, removeItem, setItem } from "../../../utils/storageProvider";
 import Edit from "../../../assets/icons/edit.svg";
 import Delete from "../../../assets/icons/delete.svg";
-import Sort from "../../../assets/icons/sort1.svg";
+import Sort from "../../../assets/icons/sort5.svg";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
+import Button from "../../../components/Common/Button";
 const index = () => {
   const [data, setData] = useState([]);
   const [sort, setSort] = useState(false);
+  // submit handler
   const onSubmit = (data) => {
     const userdata = Object.fromEntries(data.entries());
-    console.log("data", userdata);
     setItem(userdata);
     setData(getItem());
   };
-
   const navigate = useNavigate();
-
+  // data setter for inital render
   useEffect(() => {
     const data = getItem();
     if (data) {
       setData(data);
     }
   }, []);
-
+  // edit handler
   const handleEdit = (e, id) => {
     e.stopPropagation();
     if (window.confirm("Are you sure you want to edit?")) {
       navigate(`/profile/${id}`);
     }
   };
+  // delete handler
   const handleDelete = (e, id) => {
     e.stopPropagation();
     if (window.confirm("Are you sure you want to delete?")) {
@@ -40,7 +41,7 @@ const index = () => {
     }
     navigate(0);
   };
-
+  // sort handler
   const ascSort = () => {
     const sortedData = data?.sort((a, b) => {
       if (a.Name < b.Name) {
@@ -50,15 +51,17 @@ const index = () => {
     });
     setData(sortedData);
   };
+
   const handleSortToggle = () => {
     setSort((prevSort) => !prevSort);
     sort ? ascSort() : setData(getItem());
   };
   return (
-    <div>
+    <>
+      {/* form section */}
       <div className="form">
         <Form onSubmit={onSubmit}>
-          <h1>user info</h1>
+          <h1 className="form-title">Form</h1>
           <InputField
             label="Name"
             id="name"
@@ -69,6 +72,7 @@ const index = () => {
             pattern="^[A-Za-z0-9\s]{3,16}$"
             required
           />
+
           <InputField
             label="Email"
             id="email"
@@ -91,19 +95,18 @@ const index = () => {
           />
           <InputField label="Date of Birth" type="date" id="DOB" name="DOB" />
 
-          <div>
-            <label htmlFor="address">Address</label>
-            <div className="address-fields">
+          <div className="address-fields">
+            <div>
               <div className="address-field">
-                <label htmlFor="city">City</label>
+                <label className="address-label" htmlFor="city">
+                  City
+                </label>
                 <input type="text" placeholder="City" name="City" />
               </div>
               <div className="address-field">
-                <label htmlFor="District">District</label>
-                <input type="text" placeholder="District" name="District" />
-              </div>
-              <div className="address-field">
-                <label htmlFor="Province">Province</label>
+                <label className="address-label" htmlFor="Province">
+                  Province
+                </label>
                 <select name="Province" id="Province">
                   <option value="">Choose Province</option>
                   <option value="Koshi">Koshi</option>
@@ -114,8 +117,18 @@ const index = () => {
                   <option value="Sudurpashchim">Sudurpashchim</option>
                 </select>
               </div>
+            </div>
+            <div>
               <div className="address-field">
-                <label htmlFor="Country">Country</label>
+                <label className="address-label" htmlFor="District">
+                  District
+                </label>
+                <input type="text" placeholder="District" name="District" />
+              </div>
+              <div className="address-field">
+                <label className="address-label" htmlFor="Country">
+                  Country
+                </label>
                 <select name="Country" id="Country" defaultValue="Nepal">
                   <option value="">Choose Country </option>
                   <option value="Nepal" selected>
@@ -125,13 +138,14 @@ const index = () => {
               </div>
             </div>
           </div>
-
-          <button>Submit</button>
+          <Button type="submit" theme="primary">
+            ADD
+          </Button>
         </Form>
       </div>
-      {/* table */}
-      <div className="table">
-        <table>
+      {/* table section*/}
+      <div>
+        <table className="table">
           <thead>
             <tr>
               <th>ID</th>
@@ -139,6 +153,7 @@ const index = () => {
                 Name{" "}
                 <span className="table-icon" onClick={handleSortToggle}>
                   <img src={Sort} alt="sort" />
+                  <span class="tooltiptext">Sort</span>
                 </span>
               </th>
               <th>Email</th>
@@ -180,12 +195,16 @@ const index = () => {
                 );
               })
             ) : (
-              <p>No User Data Yet</p>
+              <tr>
+                <td colSpan={10} className="table-text">
+                  No User Data Yet
+                </td>
+              </tr>
             )}
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
 

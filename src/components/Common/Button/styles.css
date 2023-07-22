@@ -1,0 +1,16 @@
+.btn-primary {
+  width: 50%;
+  border-radius: 50px;
+  color: #fff;
+  background-image: linear-gradient(to right, #7971ea, #f13e62);
+  padding: 15px;
+  cursor: pointer;
+  border: none !important;
+  transition: all 0.3s ease-in-out;
+  margin: auto;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-image: linear-gradient(to right, #f13e62, #7971ea);
+}

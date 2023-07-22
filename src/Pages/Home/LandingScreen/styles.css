@@ -1,8 +1,122 @@
+.form {
+  display: flex;
+  justify-content: center;
+  margin: 3rem auto;
+}
+.form-title {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 2rem;
+  background: -webkit-linear-gradient(#000, #ef5e5e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.label {
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+.address-label {
+  font-size: 15px;
+}
+
+.form-icon {
+  display: inline-block;
+}
+.form-icon > img {
+  width: 21px;
+  height: 20px;
+}
+.address-fields {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+.address-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 1rem;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  color: #333;
+  font-size: 14px;
+  text-align: left;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+table th {
+  background-color: #1d2b39;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #ccc;
+}
+table td {
+  background-color: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+}
+
+table tr:nth-child(even) td {
+  background-color: #f2f2f2;
+}
+
+table tr:hover td {
+  background-color: #f3f0eb;
+}
+
 .table-icon {
+  position: relative;
   display: inline-block;
   cursor: pointer;
+  vertical-align: inherit;
+  padding-left: 5px;
+  transition: all 0.2s ease-in-out;
 }
 .table-icon > img {
   width: 20px;
   height: 20px;
+}
+
+.table-text {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+.tooltiptext {
+  position: absolute;
+  display: inline-block;
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 10px;
+  font-weight: 300;
+  z-index: 1;
+  top: -5px;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}
+.table-icon:hover {
+  .tooltiptext {
+    visibility: visible;
+  }
 }

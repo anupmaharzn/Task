@@ -1,23 +1,22 @@
 // data from local storage
 const userdata = JSON.parse(localStorage.getItem("userdata")) || [];
+
+// generate 5 character randomid
 const randomId = () => {
-  // generate 5 character randomid
   return Math.random().toString(36).substring(2, 7);
 };
 export const setItem = (value) => {
   //find user index
   const foundUserIndex = userdata.findIndex((user) => user.id === value.id);
+
   //if found means already exist
-  console.log({ foundUserIndex });
   if (foundUserIndex > -1) {
-    console.log("inside if");
     userdata[foundUserIndex] = {
       ...userdata[foundUserIndex],
       ...value,
     };
   } else {
     // if no user found add to array
-    console.log("inside else");
     userdata.push({
       ...value,
       id: randomId(),

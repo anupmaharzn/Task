@@ -13,10 +13,9 @@ const index = ({ children, onSubmit }) => {
       e.target.reset();
     }
   };
-
   return (
-    <form onSubmit={handleSubmit} noValidate>
-      <div className="form-container">{children}</div>
+    <form className="form-container" onSubmit={handleSubmit} noValidate>
+      {children}
     </form>
   );
 };

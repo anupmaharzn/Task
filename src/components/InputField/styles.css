@@ -1,0 +1,77 @@
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+  color: rgb(55 55 55);
+  background-color: white;
+  padding: 12px 20px 12px 20px;
+  transition: width 0.4s ease-in-out;
+  width: 98%;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus {
+  width: 100%;
+  border: 1px solid #252323;
+  outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="date"] {
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  padding: 12px 20px 12px 20px;
+  transition: width 0.4s ease-in-out;
+  font-size: 15px;
+  width: 240px;
+  color: #6c5b5b;
+  text-transform: uppercase;
+  ::-webkit-datetime-edit-text {
+    padding: 0 2rem;
+  }
+  width: 98%;
+}
+input[type="date"]:focus {
+  border: 1px solid #252323;
+  outline: none;
+  width: 100%;
+}
+
+select {
+  background-color: white;
+  border: 1px solid #ccc;
+  color: #6c5b5b;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 98%;
+}
+select:focus {
+  outline: none;
+}
+
+.error {
+  font-size: 13px;
+  color: #ff3737;
+  font-style: italic;
+  padding-top: 4px;
+}

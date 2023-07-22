@@ -4,12 +4,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getOneItem, setItem } from "../../utils/storageProvider";
 import InputField from "../../components/InputField";
 import Form from "../../components/Form";
-
+import Button from "../../components/Common/Button";
+import "./styles.css";
 const index = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
   const navigate = useNavigate();
-  console.log(data);
   useEffect(() => {
     const data = getOneItem(id);
     if (data) {
@@ -20,7 +20,7 @@ const index = () => {
     const editedData = Object.fromEntries(data.entries());
     const value = { ...editedData, id: id };
     setItem(value);
-    alert("edited sucessfully");
+    alert(`${id} id edited sucessfully`);
     setTimeout(() => {
       navigate("/");
     }, 200);
@@ -29,7 +29,7 @@ const index = () => {
     <div>
       <div className="form">
         <Form onSubmit={onSubmit}>
-          <h1>user info</h1>
+          <h1 className="edit-title">Edit Form</h1>
           <InputField
             label="Name"
             id="name"
@@ -74,9 +74,9 @@ const index = () => {
             name="DOB"
             onChange={(e) => setData({ ...data, DOB: e.target.value })}
           />
-          <div>
-            <label htmlFor="address">Address</label>
-            <div className="address-fields">
+
+          <div className="address-fields">
+            <div>
               <div className="address-field">
                 <label htmlFor="city">City</label>
                 <input
@@ -85,18 +85,6 @@ const index = () => {
                   name="City"
                   value={data?.City}
                   onChange={(e) => setData({ ...data, City: e.target.value })}
-                />
-              </div>
-              <div className="address-field">
-                <label htmlFor="District">District</label>
-                <input
-                  type="text"
-                  placeholder="District"
-                  name="District"
-                  value={data?.District}
-                  onChange={(e) =>
-                    setData({ ...data, District: e.target.value })
-                  }
                 />
               </div>
               <div className="address-field">
@@ -118,6 +106,20 @@ const index = () => {
                   <option value="Sudurpashchim">Sudurpashchim</option>
                 </select>
               </div>
+            </div>
+            <div>
+              <div className="address-field">
+                <label htmlFor="District">District</label>
+                <input
+                  type="text"
+                  placeholder="District"
+                  name="District"
+                  value={data?.District}
+                  onChange={(e) =>
+                    setData({ ...data, District: e.target.value })
+                  }
+                />
+              </div>
               <div className="address-field">
                 <label htmlFor="Country">Country</label>
                 <select name="Country" id="Country" defaultValue="Nepal">
@@ -130,7 +132,9 @@ const index = () => {
             </div>
           </div>
 
-          <button>Submit</button>
+          <Button type="submit" theme="primary">
+            EDIT
+          </Button>
         </Form>
       </div>
     </div>
